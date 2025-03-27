@@ -2,7 +2,7 @@ package utils
 
 import (
 	"fmt"
-	"io/ioutil"
+	"os"
 	"os/exec"
 	"path/filepath"
 	"strings"
@@ -15,12 +15,12 @@ func ProcessTestCase(binaryPath, testCasesDir, fileName string, req *Request, fa
 	inputFilePath := filepath.Join(testCasesDir, "in", fileName)
 	outputFilePath := filepath.Join(testCasesDir, "out", fileName)
 
-	input, err := ioutil.ReadFile(inputFilePath)
+	input, err := os.ReadFile(inputFilePath)
 	if err != nil {
 		return err
 	}
 
-	expectedOutput, err := ioutil.ReadFile(outputFilePath)
+	expectedOutput, err := os.ReadFile(outputFilePath)
 	if err != nil {
 		return err
 	}
